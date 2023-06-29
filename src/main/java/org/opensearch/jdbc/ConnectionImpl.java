@@ -137,7 +137,8 @@ public class ConnectionImpl implements OpenSearchConnection, JdbcWrapper, Loggin
     public void setAutoCommit(boolean autoCommit) throws SQLException {
         checkOpen();
         if (!autoCommit) {
-            throw new SQLNonTransientException("autoCommit can not be disabled.");
+//        ibatis에서 호출하는 코드록 동작하지 못하도록 합니다.
+//            throw new SQLNonTransientException("autoCommit can not be disabled.");
         }
     }
 
@@ -150,13 +151,15 @@ public class ConnectionImpl implements OpenSearchConnection, JdbcWrapper, Loggin
     @Override
     public void commit() throws SQLException {
         checkOpen();
-        throw new SQLNonTransientException("autoCommit is enabled on the connection.");
+//        ibatis에서 호출하는 코드록 동작하지 못하도록 합니다.
+//        throw new SQLNonTransientException("autoCommit is enabled on the connection.");
     }
 
     @Override
     public void rollback() throws SQLException {
         checkOpen();
-        throw new SQLNonTransientException("autoCommit is enabled on the connection.");
+//        ibatis에서 호출하는 코드록 동작하지 못하도록 합니다.
+//        throw new SQLNonTransientException("autoCommit is enabled on the connection.");
     }
 
     @Override
